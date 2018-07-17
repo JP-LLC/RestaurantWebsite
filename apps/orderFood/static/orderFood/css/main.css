@@ -1,0 +1,11 @@
+.site-header-contact {
+    font-size: .8rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+.site-header-location {
+    margin-right: 1.5em;
+}
+#site-logo {
+    width: 400px;
+}
