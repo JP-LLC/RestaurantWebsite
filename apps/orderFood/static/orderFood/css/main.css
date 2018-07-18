@@ -2,10 +2,35 @@
     font-size: .8rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
+    background-color: black;
 }
 .site-header-location {
     margin-right: 1.5em;
 }
 #site-logo {
     width: 400px;
+}
+.hero-img {
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Hero Image Desktop */
+@media screen and (min-width: 993px){
+    .hero-img {
+        height: 75vh;
+    }
+}
+/* Hero Image Tablet */
+@media screen and (max-width: 992px) and (min-width: 601px){
+    .hero-img {
+        height: 65vh;
+    }
+}
+/* Hero Image Mobile */
+@media screen and (max-width: 600px){
+    .hero-img {
+        height: 50vh;
+    }
 }
