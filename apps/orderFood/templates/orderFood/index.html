@@ -11,21 +11,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            // dynamically load hero images
-            var hero_images = ['https://cdn.stocksnap.io/img-thumbs/960w/T65Y75HO94.jpg', 'https://cdn.stocksnap.io/img-thumbs/960w/KJGLHB2KF4.jpg', 'https://cdn.stocksnap.io/img-thumbs/960w/GL0X7W9QLC.jpg'];
-            var hero_html = '';
-            for(x in hero_images){
-                if(x == 0){
-                    hero_html = '<div class="col-sm-12 hero-img hero-img'+x+'" style="background-image: url('+hero_images[x]+')"></div>';
-                }else{
-                    hero_html += '<div class="col-sm-12 hero-img hero-img'+x+'" style="display: none; background-image: url('+hero_images[x]+')"></div>';
-                }
-            }
-            $('#hero').html(hero_html);
             // fade through hero images
             var curr_img = 0;
             var next_img = 1;
-            var img_cnt = hero_images.length;
+            var img_cnt = $('#hero').attr('imgcount')
             setInterval(function(){
                 $('.hero-img'+curr_img).fadeOut(function(){
                     $('.hero-img'+next_img).fadeIn();
@@ -63,7 +52,14 @@
         </div>
     </header>
     <main>
-        <section id="hero" class="row">
+        <section id="hero" class="row" imgcount="{{hero_images|length}}">
+            {% for image in hero_images %}
+                {% if forloop.counter == 1 %}
+                <div class="col-sm-12 hero-img hero-img{{forloop.counter0}}" style="background-image: url('{{image}}')"></div>
+                {% else %}
+                <div class="col-sm-12 hero-img hero-img{{forloop.counter0}}" style="display: none; background-image: url('{{image}}')"></div>
+                {% endif %}
+            {% endfor %}
         </section>
     </main>
 </body>
