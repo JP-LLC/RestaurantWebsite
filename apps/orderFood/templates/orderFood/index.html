@@ -14,7 +14,7 @@
             // fade through hero images
             var curr_img = 0;
             var next_img = 1;
-            var img_cnt = $('#hero').attr('imgcount')
+            var img_cnt = $('#hero_images').attr('imgcount')
             setInterval(function(){
                 $('.hero-img'+curr_img).fadeOut(function(){
                     $('.hero-img'+next_img).fadeIn();
@@ -52,13 +52,18 @@
         </div>
     </header>
     <main>
-        <section id="hero" class="row" imgcount="{{hero_images|length}}">
+        <section id="hero_images" class="row" imgcount="{{hero_images|length}}">
             {% for image in hero_images %}
                 {% if forloop.counter == 1 %}
                 <div class="col-sm-12 hero-img hero-img{{forloop.counter0}}" style="background-image: url('{{image}}')"></div>
                 {% else %}
                 <div class="col-sm-12 hero-img hero-img{{forloop.counter0}}" style="display: none; background-image: url('{{image}}')"></div>
                 {% endif %}
+            {% endfor %}
+        </section>
+        <section id="homepage_about" class="content container">
+            {% for paragraph in homepage_about %}
+            <p>{{paragraph}}</p>
             {% endfor %}
         </section>
     </main>

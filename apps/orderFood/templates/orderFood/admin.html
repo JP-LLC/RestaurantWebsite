@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'orderFood/css/main.css' %}" media="screen" title="no title" charset="utf-8copy">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        function iframe(){
+            editor.document.designMode = "on";
+        }
+        function bold(){
+            editor.document.execCommand('bold', false, null);
+        }
+        function link(){
+            var link = prompt("Enter a link", "http://")
+            editor.document.execCommand('createlink', false, link);
+        }
+        function unlink(){
+            editor.document.execCommand('unlink', false, null);
+        }
+        function formsubmit(){
+            var iframe = window.frames['editor'].document.body.innerHTML;
+            if(iframe.contains('<div>') || iframe.contains('</div>')){
+                var newIframe = '';
+                while(iframe.contains('<div>') || iframe.contains('</div>')){
+                    if(iframe.contains('<div>')){
+                        // insert change to <p> tag.
+                    }
+                    if(iframe.contains('</div>')){
+                        // insert change to </p> tag.
+                    }
+                }
+            }else{
+                document.getElementById('homepage_paragraph').value = iframe;
+            }
+            document.getElementById('wysiwyg-form').submit();
+        }
+
+        $('')
+    </script>
+</head>
+<body onload="iframe()">
+    <section class="row">
+        <div class="col-sm-1 col-md-0"></div>
+        <div class="col-sm-12 col-md-10">
+            <h2>WYSIWYG Editor</h2>
+            <br><br>
+            <form id="wysiwyg-form" action="/admin" method="get">
+                <input type="button" value="Bold" onclick="bold()"></input>
+                <input type="button" value="Link" onclick="link()"></input>
+                <input type="button" value="Unlink" onclick="unlink()"></input>
+                <br><br>
+                <textarea name="homepage_paragraph" id="homepage_paragraph" style="display: none"></textarea>
+                <iframe name ="editor" id="editor" style="width: 100%; height: 400px; background-color: white"></iframe>
+                <br>
+                <input type="button" onclick="formsubmit()" value="Save">
+            </form>
+            {{homepage_paragraph|safe}}
+        </div>
+        <div class="col-sm-1 col-md-0"></div>
+        
+    </section>
+</body>
+</html>

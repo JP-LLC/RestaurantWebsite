@@ -1,3 +1,6 @@
+body {
+    background-color: #ece7de;
+}
 .site-header-contact {
     font-size: .8rem;
     padding-top: .5rem;
@@ -33,4 +36,8 @@
     .hero-img {
         height: 50vh;
     }
+}
+
+.content {
+    padding: 5rem 10px 4.5rem 10px;
 }
